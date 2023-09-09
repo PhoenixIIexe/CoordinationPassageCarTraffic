@@ -1,13 +1,15 @@
-FROM node:14-alpine
+FROM python:3.11
 
-WORKDIR /app
+WORKDIR /opt/app/
 
-COPY package*.json ./
 
-RUN npm install
+COPY requirements.txt ./
 
-COPY . .
+RUN apt-get update
 
-EXPOSE 3000
+RUN  pip install --upgrade pip \
+    && pip install -r requirements.txt
 
-CMD ["npm", "start"]
+EXPOSE 5000
+# run app
+CMD ["python", "app.py"]

@@ -5,4 +5,4 @@ down:
 	docker compose down -v
 
 remove:
-	docker image rm CoordinationPassageCarTraffic-service
+	docker image rm coordinationpassagecartraffic-service
