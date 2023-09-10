@@ -1,0 +1,9 @@
+version: '3'
+services:
+    service:
+        container_name: app
+        build: ./
+        volumes:
+            - ./:/opt/app/
+        ports:
+            - 5000:5000
