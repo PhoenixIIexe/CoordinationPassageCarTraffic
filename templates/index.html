@@ -19,9 +19,9 @@
         </div>
     </nav>
     <main class="main-page">
-        <form class="upload-form" id="upload-container" method="post" action="http://127.0.0.1:5000/distrib/"
+        <form class="upload-form" id="upload-container" method="post" action="http://127.0.0.1:5000/distrib/?page=0"
             enctype="multipart/form-data">
-            <input type="file" name="file" accept=".json" required>
+            <input class="upload-form__input" type="file" name="file" accept=".json" required>
             <p class="upload-form__title">Выберите или перетащите файлы в эту область</p>
             <button type="submit">Загрузить</button>
         </form>

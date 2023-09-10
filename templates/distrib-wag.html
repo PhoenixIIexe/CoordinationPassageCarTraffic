@@ -17,6 +17,20 @@
         </div>
     </nav>
     <main class="main">
+        <!-- <div class="change-page">
+            {% if page > 0 %}
+            <form action="" method="post" action="http://127.0.0.1:5000/distrib/?page={{ page - 1 }}"
+                enctype="multipart/form-data">
+                <button name="foo" value="upvote"> <- </button>
+            </form>
+            {% endif %}
+            <p>{{ page }}</p>
+            {% if page + 1 < count_pages %} <form action="" method="post"
+                action="http://127.0.0.1:5000/distrib/?page={{ page + 1 }}" enctype="multipart/form-data">
+                <button name="foo" value="upvote"> -> </button>
+                </form>
+                {% endif %}
+        </div> -->
         {% for num_train, info_train in trains.items() %}
         <div class="main__full-train-info full-train-info">
             <div class="train-info">

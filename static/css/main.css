@@ -65,6 +65,7 @@ nav {
     max-width: 500px;
     border: 4px dashed #fff;
     font-size: 18px;
+    transition: all 0.3s;
 }
 
 .upload-form__title {

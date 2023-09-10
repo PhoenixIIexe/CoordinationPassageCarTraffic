@@ -11,12 +11,15 @@ def index():
 
 @app.route('/distrib/', methods=['POST'])
 def distrib():
+    page = int(request.args.to_dict().get('page'))
+
     f = request.files['file']
     file_content = f.read()
     bytes_value = file_content
     my_json = bytes_value.decode('utf8').replace("'", '"')
     situations = json.loads(my_json)
-    situation = situations
+    count_pages = len(situations)
+    situation = situations[page]
 
     stations = list(map(lambda x: x.split()[0], situation['stations'].keys()))
     trains = situation['full_timetable']
@@ -26,7 +29,7 @@ def distrib():
     for num_train, info_train in trains.items():
         count_stations[num_train] = len(info_train['route'])
 
-    array = model.get_loading_wag_by_state([situation])
+    array = model.get_loading_wag_by_state(situation)
 
     out = array
     pick_wag = {}
@@ -46,6 +49,8 @@ def distrib():
 
 
     context = {
+        'page': page,
+        'count_pages': count_pages,
         'stations': stations,
         'trains': trains,
         'count_stations': count_stations,
