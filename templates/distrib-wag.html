@@ -22,19 +22,25 @@
             <div class="train-info">
                 <p class="train-number">{{ num_train }}</p>
                 <div class="train-info-station">
+                    {% if num_train in no_used_trains %}
+                    <p>Этот поезд не используется</p>
+                    {% else %}
                     {% for i in range(count_stations[num_train]) %}
                     <div class="stantion">
                         <p class="station-time">{{ info_train['timetable'][i] }}</p>
                         <p class="station-name">{{ stations[info_train['route'][i] - 1] }}</p>
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </div>
+            {% if num_train not in no_used_trains %}
             {% for wag in pick_wag[num_train] %}
             <div class="add-wag-on-station">
                 <p>Количество добавленных вагонов: {{ wag }}</p>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
         {% endfor %}
 
