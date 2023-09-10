@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/distrib-wag.css') }}">
     <link rel="stylesheet" href="../static/css/distrib-wag.css">
     <link href="https://fonts.cdnfonts.com/css/ibm-plex-sans-3" rel="stylesheet">
 </head>
@@ -18,35 +17,26 @@
         </div>
     </nav>
     <main class="main">
-        <div class="main__full-train-info">
+        {% for num_train, info_train in trains.items() %}
+        <div class="main__full-train-info full-train-info">
             <div class="train-info">
-                <p class="train-number">306</p>
-                <div class="stantion">
-                    <p class="station-time">01:00 - 01:52</p>
-                    <p class="station-name">Златоуст</p>
-                </div>
-                <div class="stantion">
-                    <p class="station-time">01:00 - 01:52</p>
-                    <p class="station-name">Златоуст</p>
-                </div>
-                <div class="stantion">
-                    <p class="station-time">01:00 - 01:52</p>
-                    <p class="station-name">Златоуст</p>
+                <p class="train-number">{{ num_train }}</p>
+                <div class="train-info-station">
+                    {% for i in range(count_stations[num_train]) %}
+                    <div class="stantion">
+                        <p class="station-time">{{ info_train['timetable'][i] }}</p>
+                        <p class="station-name">{{ stations[info_train['route'][i] - 1] }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
+            {% for wag in pick_wag[num_train] %}
             <div class="add-wag-on-station">
-                <p>Златоуст +1</p>
-                <p>Златоуст +2</p>
+                <p>Количество добавленных вагонов: {{ wag }}</p>
             </div>
-            <div class="add-wag-on-station">
-                <p>Златоуст +1</p>
-                <p>Златоуст +2</p>
-            </div>
-            <div class="add-wag-on-station">
-                <p>Златоуст +1</p>
-                <p>Златоуст +2</p>
-            </div>
+            {% endfor %}
         </div>
+        {% endfor %}
 
         <script src="../static/scripts/CountWag.js"></script>
     </main>

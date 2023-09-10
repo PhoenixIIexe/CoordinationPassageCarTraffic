@@ -75,30 +75,57 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
 
     padding: 50px;
 }
 
 .main__full-train-info {
-    width: 800px;
+    width: 1000px;
+    height: 90px;
+}
+
+.full-train-info {
+    position: relative;
+    background: #FFF;
 }
 
 .train-info {
-    background: #FFF;
-
     display: flex;
-    justify-content: space-around;
-}
-
-.train-number {
-    margin: 0;
-    padding: 0;
-
-    display: flex;
+    justify-content: flex-start;
     align-items: center;
 }
 
+.train-info-station {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    width: 100%;
+}
+
+.train-number {
+    margin: 0px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    /* transform: translateY(50px); */
+}
+
 .add-wag-on-station {
-    display: none;
-    justify-content: space-around;
+    position: absolute;
+    padding-left: 85px;
+    display: flex;
+    scale: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    justify-content: flex-start;
+    align-items: center;
+    transition: opacity 0.5s ease;
+
+    z-index: 2;
+    backdrop-filter: blur(20px);
 }

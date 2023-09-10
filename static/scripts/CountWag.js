@@ -1,13 +1,19 @@
-// Get the first station and add-wag-on-station elements
-const station = document.querySelector('.stantion');
-const addWag = document.querySelector('.add-wag-on-station');
+const station = document.querySelectorAll('.stantion');
+const addWag = document.querySelectorAll('.add-wag-on-station');
 
-// Add event listener for mouseover
-station.addEventListener('mouseover', (el) => {
-    console.log(el);
-});
 
-// Add event listener for mouseout
-station.addEventListener('mouseout', () => {
-    addWag.classList.remove('show');
-});
+console.log(station);
+for (let i = 0; i < station.length; ++i) {
+    station[i].addEventListener('mouseover', () => {
+        addWag[i].style.scale = '1';
+        addWag[i].style.opacity = '1';
+        addWag[i].style.height = '90px';
+        addWag[i].style.width = '915px';
+    });
+    station[i].addEventListener('mouseout', () => {
+        addWag[i].style.scale = '0';
+        addWag[i].style.opacity = '0';
+        addWag[i].style.height = '0';
+        addWag[i].style.width = '0';
+    });
+}
